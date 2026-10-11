@@ -1,5 +1,14 @@
 """Trace-first evaluation primitives for multimodal tool-using agents."""
 
+from .annotations import (
+    AdjudicationDecision,
+    AnnotationSet,
+    FailureAnnotation,
+    FailureCode,
+    FailureStage,
+    Severity,
+    summarise_annotations,
+)
 from .schema import (
     AgentTrace,
     EventType,
@@ -11,11 +20,18 @@ from .schema import (
 )
 
 __all__ = [
+    "AdjudicationDecision",
     "AgentTrace",
+    "AnnotationSet",
     "EventType",
+    "FailureAnnotation",
+    "FailureCode",
+    "FailureStage",
     "InputArtifact",
     "Modality",
+    "Severity",
     "TraceEvent",
     "TraceValidationError",
     "load_jsonl",
+    "summarise_annotations",
 ]

@@ -1,0 +1,47 @@
+{
+  "trace_id": "trace-receipt-failed-001",
+  "annotation_sets": [
+    {
+      "trace_id": "trace-receipt-failed-001",
+      "annotator_id": "reviewer-a",
+      "annotations": [
+        {
+          "annotation_id": "annotation-a1",
+          "trace_id": "trace-receipt-failed-001",
+          "annotator_id": "reviewer-a",
+          "failure_code": "verification.contradiction_ignored",
+          "event_ids": ["event-3", "event-4"],
+          "severity": "major",
+          "rationale": "The final answer conflicts with the successful OCR result."
+        }
+      ]
+    },
+    {
+      "trace_id": "trace-receipt-failed-001",
+      "annotator_id": "reviewer-b",
+      "annotations": [
+        {
+          "annotation_id": "annotation-b1",
+          "trace_id": "trace-receipt-failed-001",
+          "annotator_id": "reviewer-b",
+          "failure_code": "completion.incorrect_answer",
+          "event_ids": ["event-4"],
+          "severity": "major",
+          "rationale": "The submitted total transposes the digits in the tool output."
+        }
+      ]
+    }
+  ],
+  "adjudications": [
+    {
+      "decision_id": "decision-1",
+      "trace_id": "trace-receipt-failed-001",
+      "adjudicator_id": "lead-reviewer",
+      "source_annotation_ids": ["annotation-a1", "annotation-b1"],
+      "failure_code": "verification.contradiction_ignored",
+      "event_ids": ["event-3", "event-4"],
+      "severity": "major",
+      "rationale": "The incorrect completion is observable, but the earliest actionable failure is the missing comparison against the tool result."
+    }
+  ]
+}

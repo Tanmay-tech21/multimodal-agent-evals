@@ -40,6 +40,28 @@ python -m pytest -q
 The example is synthetic and validates only the trace machinery. It is not a
 benchmark result, model-quality claim, or record of a deployed agent.
 
+## Day 2: locate and adjudicate failures
+
+Failure annotations now identify *where* a trajectory failed and *which stage*
+best describes the failure. The taxonomy contains stable codes beneath eight
+stages: perception, grounding, planning, tool selection, tool arguments, tool
+execution, verification and completion.
+
+Each annotation records an annotator, severity, rationale and an ordered set of
+event identifiers. Independent annotation sets remain separate. An adjudication
+record cites the source annotations and preserves the final decision without
+erasing the original disagreement.
+
+```bash
+python scripts/summarise_failures.py \
+  examples/failed_receipt_trace.jsonl \
+  examples/failed_receipt_annotations.json
+```
+
+The failed-receipt fixture is synthetic. Its two reviewers intentionally assign
+different labels to demonstrate disagreement and adjudication; their labels are
+not measurements of human agreement or model quality.
+
 ## Trace contract
 
 Each JSONL line contains one complete trace. Event payloads depend on event type:
@@ -55,7 +77,7 @@ Each JSONL line contains one complete trace. Event payloads depend on event type
 ## Planned progression
 
 1. Multimodal trace schema and cross-event validation (complete)
-2. Failure taxonomy with trace-level annotations
+2. Failure taxonomy with trace-level annotations (complete)
 3. Tool selection, argument, ordering and completion metrics
 4. Multimodal grounding and evidence-attribution checks
 5. Deterministic replay and counterfactual perturbations
