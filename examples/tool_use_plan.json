@@ -1,0 +1,15 @@
+{
+  "task_id": "convert-receipt-total",
+  "steps": [
+    {
+      "step_id": "extract-total",
+      "tool_name": "ocr_image",
+      "arguments": {"artifact_id": "receipt-image"}
+    },
+    {
+      "step_id": "convert-total",
+      "tool_name": "convert_currency",
+      "arguments": {"amount": 18.42, "source": "USD", "target": "EUR"}
+    }
+  ]
+}

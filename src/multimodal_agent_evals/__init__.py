@@ -9,6 +9,13 @@ from .annotations import (
     Severity,
     summarise_annotations,
 )
+from .metrics import (
+    ExpectedToolCall,
+    MetricValue,
+    ToolPlan,
+    ToolUseReport,
+    evaluate_tool_use,
+)
 from .schema import (
     AgentTrace,
     EventType,
@@ -24,14 +31,19 @@ __all__ = [
     "AgentTrace",
     "AnnotationSet",
     "EventType",
+    "ExpectedToolCall",
     "FailureAnnotation",
     "FailureCode",
     "FailureStage",
     "InputArtifact",
     "Modality",
+    "MetricValue",
     "Severity",
     "TraceEvent",
     "TraceValidationError",
+    "ToolPlan",
+    "ToolUseReport",
+    "evaluate_tool_use",
     "load_jsonl",
     "summarise_annotations",
 ]

@@ -62,6 +62,27 @@ The failed-receipt fixture is synthetic. Its two reviewers intentionally assign
 different labels to demonstrate disagreement and adjudication; their labels are
 not measurements of human agreement or model quality.
 
+## Day 3: measure tool use without collapsing failure modes
+
+A declared `ToolPlan` now provides the expected tool names, order and exact
+arguments for one task. Evaluation reports selection precision and recall,
+argument accuracy among name-matched calls, pairwise order consistency,
+execution success and plan completion as separate quantities.
+
+Every metric preserves its numerator and denominator. A zero denominator is
+reported as `null`, not silently converted into zero. Tool names in a plan must
+currently be unique so repeated tools cannot be aligned ambiguously.
+
+```bash
+python scripts/evaluate_tool_use.py \
+  examples/tool_use_trace.jsonl \
+  examples/tool_use_plan.json
+```
+
+The synthetic fixture intentionally calls the two expected tools in reverse
+order, supplies one incorrect argument object and adds an unnecessary tool. It
+tests metric separation; it is not a benchmark of an agent or model.
+
 ## Trace contract
 
 Each JSONL line contains one complete trace. Event payloads depend on event type:
@@ -78,7 +99,7 @@ Each JSONL line contains one complete trace. Event payloads depend on event type
 
 1. Multimodal trace schema and cross-event validation (complete)
 2. Failure taxonomy with trace-level annotations (complete)
-3. Tool selection, argument, ordering and completion metrics
+3. Tool selection, argument, ordering and completion metrics (complete)
 4. Multimodal grounding and evidence-attribution checks
 5. Deterministic replay and counterfactual perturbations
 6. Evaluator agreement and judge calibration
