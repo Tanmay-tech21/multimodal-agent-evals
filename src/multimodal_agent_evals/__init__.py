@@ -16,6 +16,16 @@ from .metrics import (
     ToolUseReport,
     evaluate_tool_use,
 )
+from .grounding import (
+    EvidenceReference,
+    EvidenceSourceType,
+    GroundedClaim,
+    GroundingRecord,
+    GroundingReport,
+    GroundingStatus,
+    LocatorType,
+    summarise_grounding,
+)
 from .schema import (
     AgentTrace,
     EventType,
@@ -31,11 +41,18 @@ __all__ = [
     "AgentTrace",
     "AnnotationSet",
     "EventType",
+    "EvidenceReference",
+    "EvidenceSourceType",
     "ExpectedToolCall",
     "FailureAnnotation",
     "FailureCode",
     "FailureStage",
     "InputArtifact",
+    "GroundedClaim",
+    "GroundingRecord",
+    "GroundingReport",
+    "GroundingStatus",
+    "LocatorType",
     "Modality",
     "MetricValue",
     "Severity",
@@ -46,4 +63,5 @@ __all__ = [
     "evaluate_tool_use",
     "load_jsonl",
     "summarise_annotations",
+    "summarise_grounding",
 ]

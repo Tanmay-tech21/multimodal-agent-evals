@@ -1,0 +1,43 @@
+{
+  "trace_id": "receipt-grounding-001",
+  "evidence": [
+    {
+      "evidence_id": "evidence-merchant",
+      "source_type": "tool_result",
+      "source_id": "event-2",
+      "locator": {"type": "json_pointer", "path": "/merchant"}
+    },
+    {
+      "evidence_id": "evidence-total-tool",
+      "source_type": "tool_result",
+      "source_id": "event-2",
+      "locator": {"type": "json_pointer", "path": "/total"}
+    },
+    {
+      "evidence_id": "evidence-total-image",
+      "source_type": "artifact",
+      "source_id": "receipt-image",
+      "locator": {"type": "bounding_box", "x": 0.45, "y": 0.75, "width": 0.4, "height": 0.1}
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-merchant",
+      "trace_id": "receipt-grounding-001",
+      "event_id": "event-3",
+      "text": "The receipt is from Market Cafe.",
+      "status": "supported",
+      "evidence_ids": ["evidence-merchant"],
+      "rationale": "The structured OCR output names Market Cafe as the merchant."
+    },
+    {
+      "claim_id": "claim-total",
+      "trace_id": "receipt-grounding-001",
+      "event_id": "event-3",
+      "text": "The displayed total is $81.42.",
+      "status": "contradicted",
+      "evidence_ids": ["evidence-total-tool", "evidence-total-image"],
+      "rationale": "The annotated receipt region and OCR output indicate 18.42 rather than 81.42."
+    }
+  ]
+}

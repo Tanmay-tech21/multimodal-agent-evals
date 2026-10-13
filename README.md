@@ -83,6 +83,33 @@ The synthetic fixture intentionally calls the two expected tools in reverse
 order, supplies one incorrect argument object and adds an unnecessary tool. It
 tests metric separation; it is not a benchmark of an agent or model.
 
+## Day 4: ground claims in multimodal evidence
+
+Final-answer claims can now cite immutable evidence references rather than a
+free-form explanation alone. References target an input artifact or a successful
+tool result and use a modality-aware locator:
+
+- normalized bounding boxes for image regions;
+- time ranges for audio and video;
+- RFC 6901-style JSON pointers for structured tool output; or
+- the whole source when a finer locator would be misleading.
+
+The evaluator validates source existence, locator compatibility, JSON-pointer
+resolution, claim-to-event linkage and evidence-ID integrity. Curators assign one
+of four explicit statuses: `supported`, `inferred`, `unsupported` or
+`contradicted`. These labels remain human judgements; structural validation does
+not claim to prove semantic truth.
+
+```bash
+python scripts/evaluate_grounding.py \
+  examples/grounding_trace.jsonl \
+  examples/grounding_annotations.json
+```
+
+The synthetic fixture deliberately contains one supported merchant claim and one
+contradicted total claim. Its output validates metric accounting and provenance,
+not OCR quality or model performance.
+
 ## Trace contract
 
 Each JSONL line contains one complete trace. Event payloads depend on event type:
@@ -100,7 +127,7 @@ Each JSONL line contains one complete trace. Event payloads depend on event type
 1. Multimodal trace schema and cross-event validation (complete)
 2. Failure taxonomy with trace-level annotations (complete)
 3. Tool selection, argument, ordering and completion metrics (complete)
-4. Multimodal grounding and evidence-attribution checks
+4. Multimodal grounding and evidence-attribution checks (complete)
 5. Deterministic replay and counterfactual perturbations
 6. Evaluator agreement and judge calibration
 7. Subgroup analysis and uncertainty intervals
