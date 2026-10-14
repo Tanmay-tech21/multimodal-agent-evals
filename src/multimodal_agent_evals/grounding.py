@@ -109,7 +109,8 @@ def _pointer_tokens(path: str) -> list[str]:
     return tokens
 
 
-def _resolve_pointer(document: Any, path: str) -> Any:
+def resolve_json_pointer(document: Any, path: str) -> Any:
+    """Resolve an RFC 6901 JSON pointer or raise a validation error."""
     current = document
     for token in _pointer_tokens(path):
         if isinstance(current, Mapping):
@@ -188,7 +189,7 @@ class EvidenceReference:
         if locator_type is LocatorType.JSON_POINTER:
             if event.payload.get("status") != "ok":
                 raise TraceValidationError("JSON-pointer evidence requires a successful tool result")
-            _resolve_pointer(event.payload.get("output"), str(self.locator["path"]))
+            resolve_json_pointer(event.payload.get("output"), str(self.locator["path"]))
 
 
 @dataclass(frozen=True)

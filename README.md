@@ -110,6 +110,30 @@ The synthetic fixture deliberately contains one supported merchant claim and one
 contradicted total claim. Its output validates metric accounting and provenance,
 not OCR quality or model performance.
 
+## Day 5: test causal sensitivity with counterfactual replay
+
+A counterfactual manifest now declares one isolated intervention between a
+baseline trace and a recorded replay. An intervention targets either an artifact
+field or an exact JSON-pointer location inside a tool result. Validation rejects
+undeclared changes to artifacts, pre-intervention events or the targeted result.
+
+Each case declares whether the final answer should change or remain invariant.
+The report keeps overall answer-change rate separate from:
+
+- sensitivity when task-relevant evidence changes;
+- invariance when irrelevant evidence changes; and
+- the proportion of declared expectations that the replay satisfies.
+
+```bash
+python scripts/evaluate_counterfactuals.py \
+  examples/counterfactual_traces.jsonl \
+  examples/counterfactual_manifest.json
+```
+
+The synthetic suite changes a receipt total in one replay and only the merchant
+name in another. It validates isolated-intervention accounting; it does not show
+that a live model is causally grounded.
+
 ## Trace contract
 
 Each JSONL line contains one complete trace. Event payloads depend on event type:
@@ -128,7 +152,7 @@ Each JSONL line contains one complete trace. Event payloads depend on event type
 2. Failure taxonomy with trace-level annotations (complete)
 3. Tool selection, argument, ordering and completion metrics (complete)
 4. Multimodal grounding and evidence-attribution checks (complete)
-5. Deterministic replay and counterfactual perturbations
+5. Deterministic replay and counterfactual perturbations (complete)
 6. Evaluator agreement and judge calibration
 7. Subgroup analysis and uncertainty intervals
 8. Reproducible evaluation report and machine-readable evidence

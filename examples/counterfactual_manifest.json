@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "case_id": "change-cited-total",
+      "baseline_trace_id": "receipt-baseline",
+      "variant_trace_id": "receipt-total-variant",
+      "target_type": "tool_result",
+      "target_id": "event-2",
+      "path": "/total",
+      "before": "18.42",
+      "after": "21.05",
+      "expected_effect": "change",
+      "rationale": "The requested answer should respond to an intervention on the extracted total."
+    },
+    {
+      "case_id": "ignore-irrelevant-merchant",
+      "baseline_trace_id": "receipt-baseline",
+      "variant_trace_id": "receipt-merchant-variant",
+      "target_type": "tool_result",
+      "target_id": "event-2",
+      "path": "/merchant",
+      "before": "Market Cafe",
+      "after": "Harbor Mart",
+      "expected_effect": "invariant",
+      "rationale": "A total-only answer should remain stable when only the merchant changes."
+    }
+  ]
+}
