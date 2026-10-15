@@ -134,6 +134,33 @@ The synthetic suite changes a receipt total in one replay and only the merchant
 name in another. It validates isolated-intervention accounting; it does not show
 that a live model is causally grounded.
 
+## Day 6: calibrate the evaluators
+
+An evaluation is only as credible as its labels. `RatingStudy` declares the
+complete item, rater and label universes so omitted judgements remain visible
+rather than being silently treated as agreement or disagreement. The report
+includes:
+
+- per-rater coverage and overall study completeness;
+- raw pairwise agreement and directional confusion matrices;
+- Cohen's kappa for each rater pair;
+- nominal Krippendorff's alpha across all raters with missing ratings; and
+- the rate of unanimous decisions among items rated at least twice.
+
+Chance-corrected agreement is returned as `null` when the relevant marginals are
+degenerate. This is preferable to reporting a reassuring but undefined number.
+The confusion matrices retain rater direction so systematic judge-model label
+substitutions can be inspected before adjudication.
+
+```bash
+python scripts/evaluate_agreement.py examples/evaluator_ratings.json
+```
+
+The example is a synthetic calibration exercise containing two reviewers and
+one model-based judge. Its agreement values validate the implementation; they
+are not measurements of a deployed evaluator or evidence that one judge is
+better than another.
+
 ## Trace contract
 
 Each JSONL line contains one complete trace. Event payloads depend on event type:
@@ -153,7 +180,7 @@ Each JSONL line contains one complete trace. Event payloads depend on event type
 3. Tool selection, argument, ordering and completion metrics (complete)
 4. Multimodal grounding and evidence-attribution checks (complete)
 5. Deterministic replay and counterfactual perturbations (complete)
-6. Evaluator agreement and judge calibration
+6. Evaluator agreement and judge calibration (complete)
 7. Subgroup analysis and uncertainty intervals
 8. Reproducible evaluation report and machine-readable evidence
 9. Cross-project portfolio integration and final audit

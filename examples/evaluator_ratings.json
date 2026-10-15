@@ -1,0 +1,31 @@
+{
+  "study_id": "grounding-evaluator-calibration",
+  "labels": ["supported", "contradicted", "unsupported", "inferred"],
+  "items": ["claim-1", "claim-2", "claim-3", "claim-4", "claim-5", "claim-6", "claim-7", "claim-8"],
+  "raters": ["reviewer-a", "reviewer-b", "judge-model"],
+  "ratings": [
+    {"item_id": "claim-1", "rater_id": "reviewer-a", "label": "supported"},
+    {"item_id": "claim-2", "rater_id": "reviewer-a", "label": "supported"},
+    {"item_id": "claim-3", "rater_id": "reviewer-a", "label": "contradicted"},
+    {"item_id": "claim-4", "rater_id": "reviewer-a", "label": "unsupported"},
+    {"item_id": "claim-5", "rater_id": "reviewer-a", "label": "supported"},
+    {"item_id": "claim-6", "rater_id": "reviewer-a", "label": "supported"},
+    {"item_id": "claim-7", "rater_id": "reviewer-a", "label": "inferred"},
+    {"item_id": "claim-8", "rater_id": "reviewer-a", "label": "supported"},
+    {"item_id": "claim-1", "rater_id": "reviewer-b", "label": "supported"},
+    {"item_id": "claim-2", "rater_id": "reviewer-b", "label": "contradicted"},
+    {"item_id": "claim-3", "rater_id": "reviewer-b", "label": "contradicted"},
+    {"item_id": "claim-4", "rater_id": "reviewer-b", "label": "unsupported"},
+    {"item_id": "claim-5", "rater_id": "reviewer-b", "label": "supported"},
+    {"item_id": "claim-6", "rater_id": "reviewer-b", "label": "supported"},
+    {"item_id": "claim-7", "rater_id": "reviewer-b", "label": "unsupported"},
+    {"item_id": "claim-8", "rater_id": "reviewer-b", "label": "supported"},
+    {"item_id": "claim-1", "rater_id": "judge-model", "label": "supported"},
+    {"item_id": "claim-2", "rater_id": "judge-model", "label": "supported"},
+    {"item_id": "claim-3", "rater_id": "judge-model", "label": "contradicted"},
+    {"item_id": "claim-4", "rater_id": "judge-model", "label": "unsupported"},
+    {"item_id": "claim-5", "rater_id": "judge-model", "label": "contradicted"},
+    {"item_id": "claim-6", "rater_id": "judge-model", "label": "supported"},
+    {"item_id": "claim-7", "rater_id": "judge-model", "label": "inferred"}
+  ]
+}

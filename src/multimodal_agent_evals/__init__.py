@@ -9,6 +9,13 @@ from .annotations import (
     Severity,
     summarise_annotations,
 )
+from .agreement import (
+    AgreementReport,
+    PairwiseAgreement,
+    Rating,
+    RatingStudy,
+    evaluate_agreement,
+)
 from .counterfactuals import (
     CounterfactualCase,
     CounterfactualOutcome,
@@ -46,6 +53,7 @@ from .schema import (
 
 __all__ = [
     "AdjudicationDecision",
+    "AgreementReport",
     "AgentTrace",
     "AnnotationSet",
     "CounterfactualCase",
@@ -67,6 +75,9 @@ __all__ = [
     "GroundingStatus",
     "LocatorType",
     "Modality",
+    "PairwiseAgreement",
+    "Rating",
+    "RatingStudy",
     "MetricValue",
     "Severity",
     "TraceEvent",
@@ -74,6 +85,7 @@ __all__ = [
     "ToolPlan",
     "ToolUseReport",
     "evaluate_tool_use",
+    "evaluate_agreement",
     "evaluate_counterfactuals",
     "load_jsonl",
     "summarise_annotations",
