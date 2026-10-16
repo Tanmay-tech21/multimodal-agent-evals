@@ -1,0 +1,13 @@
+{
+  "dimensions": ["modality", "task_family"],
+  "items": [
+    {"item_id": "claim-1", "modality": "image", "task_family": "receipt"},
+    {"item_id": "claim-2", "modality": "image", "task_family": "receipt"},
+    {"item_id": "claim-3", "modality": "tool_output", "task_family": "receipt"},
+    {"item_id": "claim-4", "modality": "tool_output", "task_family": "receipt"},
+    {"item_id": "claim-5", "modality": "image", "task_family": "document"},
+    {"item_id": "claim-6", "modality": "image", "task_family": "document"},
+    {"item_id": "claim-7", "modality": "tool_output", "task_family": "document"},
+    {"item_id": "claim-8", "modality": "tool_output", "task_family": "document"}
+  ]
+}

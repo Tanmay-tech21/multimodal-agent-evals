@@ -50,12 +50,20 @@ from .schema import (
     TraceValidationError,
     load_jsonl,
 )
+from .subgroups import (
+    BootstrapInterval,
+    SubgroupManifest,
+    SubgroupReport,
+    SubgroupResult,
+    evaluate_subgroups,
+)
 
 __all__ = [
     "AdjudicationDecision",
     "AgreementReport",
     "AgentTrace",
     "AnnotationSet",
+    "BootstrapInterval",
     "CounterfactualCase",
     "CounterfactualOutcome",
     "CounterfactualReport",
@@ -80,6 +88,9 @@ __all__ = [
     "RatingStudy",
     "MetricValue",
     "Severity",
+    "SubgroupManifest",
+    "SubgroupReport",
+    "SubgroupResult",
     "TraceEvent",
     "TraceValidationError",
     "ToolPlan",
@@ -87,6 +98,7 @@ __all__ = [
     "evaluate_tool_use",
     "evaluate_agreement",
     "evaluate_counterfactuals",
+    "evaluate_subgroups",
     "load_jsonl",
     "summarise_annotations",
     "summarise_grounding",

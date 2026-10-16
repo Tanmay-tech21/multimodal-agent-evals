@@ -161,6 +161,30 @@ one model-based judge. Its agreement values validate the implementation; they
 are not measurements of a deployed evaluator or evidence that one judge is
 better than another.
 
+## Day 7: expose subgroup uncertainty
+
+Aggregate reliability can conceal evaluator failures concentrated in one
+modality or task family. A strict subgroup manifest now assigns every study item
+to each declared dimension. The evaluator filters ratings without imputing
+missing judgements, reports an agreement study for each group, and calculates a
+percentile interval for nominal Krippendorff's alpha by resampling complete items.
+
+Item-level resampling preserves the dependence among reviewers rating the same
+case. Fixed seeds make the analysis reproducible. Reports retain the number of
+valid bootstrap replicates and flag groups with fewer than the configured
+minimum number of items or many undefined replicates.
+
+```bash
+python scripts/evaluate_subgroups.py \
+  examples/evaluator_ratings.json \
+  examples/evaluator_subgroups.json \
+  modality --resamples 1000 --seed 2026
+```
+
+The example contains only four items per modality and is intentionally marked
+`limited_items`. Its intervals demonstrate uncertainty propagation; they do not
+support claims about modality-level judge performance.
+
 ## Trace contract
 
 Each JSONL line contains one complete trace. Event payloads depend on event type:
@@ -181,6 +205,6 @@ Each JSONL line contains one complete trace. Event payloads depend on event type
 4. Multimodal grounding and evidence-attribution checks (complete)
 5. Deterministic replay and counterfactual perturbations (complete)
 6. Evaluator agreement and judge calibration (complete)
-7. Subgroup analysis and uncertainty intervals
+7. Subgroup analysis and uncertainty intervals (complete)
 8. Reproducible evaluation report and machine-readable evidence
 9. Cross-project portfolio integration and final audit
