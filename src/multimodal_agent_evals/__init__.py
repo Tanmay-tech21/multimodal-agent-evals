@@ -50,6 +50,12 @@ from .schema import (
     TraceValidationError,
     load_jsonl,
 )
+from .reporting import (
+    EvidenceClaim,
+    EvidenceSection,
+    EvaluationSnapshot,
+    sha256_file,
+)
 from .subgroups import (
     BootstrapInterval,
     SubgroupManifest,
@@ -67,11 +73,14 @@ __all__ = [
     "CounterfactualCase",
     "CounterfactualOutcome",
     "CounterfactualReport",
+    "EvidenceClaim",
+    "EvidenceSection",
     "EventType",
     "EvidenceReference",
     "EvidenceSourceType",
     "ExpectedToolCall",
     "ExpectedEffect",
+    "EvaluationSnapshot",
     "FailureAnnotation",
     "FailureCode",
     "FailureStage",
@@ -102,4 +111,5 @@ __all__ = [
     "load_jsonl",
     "summarise_annotations",
     "summarise_grounding",
+    "sha256_file",
 ]

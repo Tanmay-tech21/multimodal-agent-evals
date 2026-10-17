@@ -185,6 +185,27 @@ The example contains only four items per modality and is intentionally marked
 `limited_items`. Its intervals demonstrate uncertainty propagation; they do not
 support claims about modality-level judge performance.
 
+## Day 8: bind every report claim to evidence
+
+The full synthetic suite now executes once and produces matching Markdown and
+JSON artifacts. Each evidence section preserves its complete metric result,
+limitations and SHA-256 fingerprints for every input fixture. Bootstrap settings
+are stored at snapshot level.
+
+Narrative conclusions are represented as `EvidenceClaim` records. Each claim
+contains a JSON Pointer and the expected value at that path. Snapshot validation
+fails if a metric moves, disappears or no longer supports the written statement,
+preventing a stale report from surviving a changed experiment.
+
+```bash
+python scripts/build_evaluation_report.py
+python -m pytest -q
+```
+
+Generated artifacts are committed under `artifacts/`. They summarise synthetic
+pipeline tests only and contain explicit limitations against model-performance,
+human-reliability or deployment claims.
+
 ## Trace contract
 
 Each JSONL line contains one complete trace. Event payloads depend on event type:
@@ -206,5 +227,5 @@ Each JSONL line contains one complete trace. Event payloads depend on event type
 5. Deterministic replay and counterfactual perturbations (complete)
 6. Evaluator agreement and judge calibration (complete)
 7. Subgroup analysis and uncertainty intervals (complete)
-8. Reproducible evaluation report and machine-readable evidence
+8. Reproducible evaluation report and machine-readable evidence (complete)
 9. Cross-project portfolio integration and final audit
